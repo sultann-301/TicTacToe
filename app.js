@@ -91,11 +91,10 @@ const gameController = (() => {
   return { toggleTurn, checkWinner, isDraw };
 })();
 
-const player1 = player("hebab", "X");
-const player2 = player("neela", "O");
+const player1 = player("player 1", "X");
+const player2 = player("player 2", "O");
 let currentPlayer = player1;
 let otherPlayer = player2;
-function playRound() {}
 
 const gameTiles = document.querySelectorAll(".game-tile");
 let isGameOver = false;
@@ -113,15 +112,11 @@ for (let [index, gameTile] of gameTiles.entries()) {
         if (isDrawFound) {
           console.log("the game ended with a draw");
           gameBoard.renderEndGameScreen();
-          gameEnd = true;
-          return gameEnd;
         } else {
           gameController.toggleTurn(currentPlayer, otherPlayer);
         }
       } else {
         gameBoard.renderEndGameScreen(currentPlayer);
-        gameEnd = true;
-        return gameEnd;
       }
     },
     { once: true }
